@@ -1,0 +1,33 @@
+[package]
+name = "wetink"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+description = "A live Markdown viewer for the terminal that highlights changed blocks as the file is edited"
+license = "MIT"
+repository = "https://github.com/rooa/wetink"
+readme = "README.md"
+include = ["/src", "/README.md", "/LICENSE", "/Cargo.lock"]
+keywords = ["markdown", "terminal", "tui", "viewer", "diff"]
+categories = ["command-line-utilities", "text-processing"]
+
+[features]
+default = ["syntax"]
+# Syntax highlighting for fenced code blocks (adds syntect's bundled grammars).
+syntax = ["dep:syntect"]
+
+[dependencies]
+pulldown-cmark = { version = "0.13.4", default-features = false }
+ratatui = { version = "0.30.2", default-features = false, features = ["crossterm"] }
+similar = "3.2.0"
+syntect = { version = "5.3.0", default-features = false, features = ["default-syntaxes", "default-themes", "regex-fancy"], optional = true }
+unicode-width = "0.2.2"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
