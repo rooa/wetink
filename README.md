@@ -1,10 +1,9 @@
 # wetink
 
-`tail -f` for Markdown. A terminal viewer that watches a Markdown file and
-highlights the blocks that change, made for following documents that coding
-agents write. Changed blocks flash, then keep a gutter mark: `▎` green for
-added, `▎` amber for modified, and `┄┄ N blocks removed ┄┄` where blocks
-were removed. Press `d` to see a diff against the version you opened.
+**See what your agent just changed.** wetink renders a Markdown file in your
+terminal and keeps it live. Blocks that change flash and stay marked, so you
+never re-read a whole plan to find the two lines that moved. Press `d` on any
+change to see exactly how it differs from the version you opened.
 
 ![wetink following a file as an agent edits it](demo/wetink.gif)
 
